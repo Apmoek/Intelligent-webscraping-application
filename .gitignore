@@ -3,3 +3,4 @@
 /bitcoin_price.csv
 /config.py
 /__pycache__
+/bitcoin_data.db
