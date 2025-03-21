@@ -1,6 +1,5 @@
 /.venv
 /.vs
-/BitcoinTest.py
 /bitcoin_price.csv
 /config.py
 /__pycache__
