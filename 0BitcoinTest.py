@@ -21,7 +21,7 @@ df = pd.DataFrame([{
     "source": "CoinGecko"
 }])
 
-# Export to Excel
-df.to_excel("bitcoin_price.xlsx", index=False)
+# Export to CSV
+df.to_csv("bitcoin_price.csv", index=False)
 
-print("✅ Data saved to bitcoin_price.xlsx")
+print("✅ Data saved to bitcoin_price.csv")
