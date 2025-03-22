@@ -21,6 +21,7 @@ data = response.json()
 # Add timestamp
 timestamp = int(datetime.now().timestamp())  # Gives you Unix time as int
 
+# Old code, used during troubleshooting GRAFANA and not receiving the correct time in the dashboard. 
 # timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # timestamp = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 # timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
