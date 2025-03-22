@@ -19,8 +19,9 @@ response = requests.get(url, headers=headers)
 data = response.json()
 
 # Add timestamp
-timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+timestamp = int(datetime.now().timestamp())  # Gives you Unix time as int
 
+# timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # timestamp = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 # timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
