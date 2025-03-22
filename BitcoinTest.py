@@ -45,7 +45,7 @@ df.to_csv(filename, mode='a', index=False, header=not file_exists)
 
 # Create or append to SQLite database
 conn = sqlite3.connect("bitcoin_data.db")
-df.to_sql("prices", conn, if_exists="append", index=False)
+df.to_sql("prices_unix", conn, if_exists="append", index=False)
 conn.close()
 
 # Terminal messag, when script has been completed.
