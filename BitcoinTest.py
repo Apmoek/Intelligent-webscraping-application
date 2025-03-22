@@ -19,7 +19,8 @@ response = requests.get(url, headers=headers)
 data = response.json()
 
 # Add timestamp
-timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+timestamp = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+#timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
 # Create a DataFrame
 df = pd.DataFrame([{
