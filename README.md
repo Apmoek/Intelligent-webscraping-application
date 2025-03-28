@@ -5,18 +5,19 @@ A small but powerful Python script that fetches the current price of cryptocurre
 ---
 
 ## 📌 Features
-- 🪙 Real-time Bitcoin price retrieval
+- 🌍 Support multiple cryptocurrencies
+- 🪙 Real-time Bitcoin price 
+- 🪙 Real-time Ethereum price 
 - 📁 Appends data to a CSV log with timestamp
 - 🔒 Secure API key storage via `config.py`
 - 📊 Build Grafana dashboards using data from the database
-- 🛢 Store in a database (SQLite)
+- 🛢 Stores in a database (SQLite)
 
 ---
 ## 📈 Future Plans
 This project is a small proof of concept with potential to grow:
 - ⏱ Automate logging with Task Scheduler or cron
 - 🛠 Add better error handling & retries
-- 🌍 Support multiple cryptocurrencies
 
 ---
 ## 📄 License
