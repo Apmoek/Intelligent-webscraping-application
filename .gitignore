@@ -4,3 +4,4 @@
 /config.py
 /__pycache__
 /bitcoin_data.db
+/ethereum_price.csv
