@@ -15,3 +15,39 @@ url = f"https://api.coingecko.com/api/v3/simple/price?ids={ticker1}&vs_currencie
 headers = {"accept": "application/json"}
 response = requests.get(url, headers=headers)
 
+# Convert respone to JSON
+data = response.json()
+
+# Add timestamp
+timestamp = int(datetime.now().timestamp())  # Gives you Unix time as int
+
+# Old code, used during troubleshooting GRAFANA and not receiving the correct time in the dashboard. 
+# timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+# timestamp = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+# timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+
+# Create a DataFrame
+df = pd.DataFrame([{
+    "timestamp": timestamp,
+    "ticker": ticker1,
+    "currency": currency,
+    "price": data[ticker1][currency],
+    "source": "CoinGecko"
+}])
+
+# Define filename
+filename = "ethereum_price.csv"
+
+# Check if file exists
+file_exists = os.path.isfile(filename)
+
+# Append to CSV file
+df.to_csv(filename, mode='a', index=False, header=not file_exists)
+
+# Create or append to SQLite database
+conn = sqlite3.connect("bitcoin_data.db")
+df.to_sql("prices_eth_unix", conn, if_exists="append", index=False)
+conn.close()
+
+# Terminal messag, when script has been completed.
+print(f"✅ Data appended to {filename} and stored in bitcoin_data.db in prices_eth_unix")
