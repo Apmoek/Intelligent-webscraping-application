@@ -4,8 +4,8 @@ $config = Get-Content -Raw -Path $configPath | ConvertFrom-Json
 $AppPassword = $config.AppPassword
 
 # === Hardcoded values ===
-$EmailFrom    = "your_email@gmail.com"
-$EmailTo      = "your_email@gmail.com"
+$EmailFrom    = "tfontys@gmail.com"
+$EmailTo      = "vanderhorstjeffrey@gmail.com"
 $Subject      = "📬 PowerShell Test Email (Gmail SMTP)"
 $Body         = "Hello! This is a test email sent from PowerShell via Gmail SMTP."
 $SmtpServer   = "smtp.gmail.com"
