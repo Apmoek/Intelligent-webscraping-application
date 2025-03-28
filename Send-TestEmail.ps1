@@ -4,7 +4,7 @@
 # === Config ===
 $EmailFrom    = "tfontys@gmail.com"
 $EmailTo      = "vanderhorstjeffrey@gmail.com"
-$Subject      = "📬 PowerShell Test Email (Gmail SMTP)"
+$Subject      = "PowerShell Test Email (Gmail SMTP)"
 $Body         = "Hello! This is a test email sent from PowerShell via Gmail SMTP."
 
 # App password from https://myaccount.google.com/apppasswords
