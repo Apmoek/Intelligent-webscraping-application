@@ -1,3 +1,6 @@
+# === Load External Password ===
+. "C:\Projects\CryptoMonitor\Intelligent-webscraping-application\AppPassword.ps1"
+
 # === Config ===
 $EmailFrom    = "tfontys@gmail.com"
 $EmailTo      = "vanderhorstjeffrey@gmail.com"
@@ -5,7 +8,7 @@ $Subject      = "📬 PowerShell Test Email (Gmail SMTP)"
 $Body         = "Hello! This is a test email sent from PowerShell via Gmail SMTP."
 
 # App password from https://myaccount.google.com/apppasswords
-$AppPassword  = "rsss lzjv ffse hzwn"
+$AppPassword  = $AppPasswordGmail
 
 # SMTP Settings
 $SmtpServer   = "smtp.gmail.com"
