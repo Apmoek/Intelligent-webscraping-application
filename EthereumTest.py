@@ -44,5 +44,5 @@ conn = sqlite3.connect("bitcoin_data.db")
 df.to_sql("prices_eth_unix", conn, if_exists="append", index=False)
 conn.close()
 
-# Terminal messag, when script has been completed.
-print(f"✅ Data appended to {filename} and stored in bitcoin_data.db in prices_eth_unix")
+# Terminal message, when script has been completed.
+print(f"✅ Data appended to {filename} and stored in bitcoin_data.db in the prices_eth_unix table.")
