@@ -1,13 +1,13 @@
-# === Load AppPassword from JSON config ===
-$configPath = Join-Path -Path $PSScriptRoot -ChildPath "email_config.json"
-$config = Get-Content -Raw -Path $configPath | ConvertFrom-Json
-$AppPassword = $config.AppPassword
-
-# === Hardcoded values ===
+# === Config ===
 $EmailFrom    = "tfontys@gmail.com"
 $EmailTo      = "vanderhorstjeffrey@gmail.com"
 $Subject      = "📬 PowerShell Test Email (Gmail SMTP)"
 $Body         = "Hello! This is a test email sent from PowerShell via Gmail SMTP."
+
+# App password from https://myaccount.google.com/apppasswords
+$AppPassword  = "rsss lzjv ffse hzwn"
+
+# SMTP Settings
 $SmtpServer   = "smtp.gmail.com"
 $SmtpPort     = 587
 
