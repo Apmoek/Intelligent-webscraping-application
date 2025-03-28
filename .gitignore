@@ -5,3 +5,4 @@
 /__pycache__
 /bitcoin_data.db
 /ethereum_price.csv
+/email_config.json
