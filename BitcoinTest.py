@@ -45,7 +45,7 @@ df.to_sql("prices_unix", conn, if_exists="append", index=False)
 conn.close()
 
 # Een terminal bericht dat het script succesvol heeft gedraaid.
-print(f"✅ Data appended to {filename} and stored in bitcoin_data.db in the prices_unix table.")
+print(f"✅ Data appended to and stored in bitcoin_data.db in the prices_unix table.")
 
 
 
