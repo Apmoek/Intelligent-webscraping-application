@@ -30,15 +30,6 @@ df = pd.DataFrame([{
     "source": "CoinGecko"
 }])
 
-# Geeft de naam aan van het CSV bestand. 
-# filename = "bitcoin_price.csv"
-
-# Controleert of het bestand als bestaat.
-# file_exists = os.path.isfile(filename)
-
-# Stukje code wat een csv bestand maakt als het er nog niet is en anders een extra rij toevoegd aan het bestand. 
-# df.to_csv(filename, mode='a', index=False, header=not file_exists)
-
 # Maakt de database aan als deze niet bestaat, als dat wel zo is wordt er data bijgeschreven.
 conn = sqlite3.connect("bitcoin_data.db")
 df.to_sql("prices_unix", conn, if_exists="append", index=False)
