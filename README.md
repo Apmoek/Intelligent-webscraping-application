@@ -13,11 +13,12 @@ A small but powerful Python script that fetches the current price of cryptocurre
 - 📊 Build Grafana dashboards using data from the database
 - 🛢 Stores in a database (SQLite)
 - ⏱ Automated the script with Task Scheduler
+- Send notifications with email
 
 ---
 ## 📈 Future Plans
 This project is a small proof of concept with potential to grow:
-- Send notifications with email
+
 
 ---
 ## 📄 License
