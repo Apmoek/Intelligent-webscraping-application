@@ -10,18 +10,18 @@ from datetime import datetime
 import os
 import sqlite3
 
-# Main code to retrieve actual Ethereum price
+# Code die een API verbinding maakt naar Coingecko om de prijs op te halen van Bitcoin.
 url = f"https://api.coingecko.com/api/v3/simple/price?ids={ticker1}&vs_currencies={currency}&x_cg_demo_api_key={api_key}"
 headers = {"accept": "application/json"}
 response = requests.get(url, headers=headers)
 
-# Convert respone to JSON
+# Zet het antwoord om in json.
 data = response.json()
 
-# Add timestamp
-timestamp = int(datetime.now().timestamp())  # Gives you Unix time as int
+# Geeft de tijd aan
+timestamp = int(datetime.now().timestamp())  # Wordt aangemaakt in unix formaat
 
-# Create a DataFrame
+# Geeft de data vorm die in de database komt.
 df = pd.DataFrame([{
     "timestamp": timestamp,
     "ticker": ticker1,
@@ -30,19 +30,19 @@ df = pd.DataFrame([{
     "source": "CoinGecko"
 }])
 
-# Define filename
+# Geeft de naam aan van het CSV bestand. 
 filename = "ethereum_price.csv"
 
-# Check if file exists
+# Controleert of het bestand als bestaat.
 file_exists = os.path.isfile(filename)
 
-# Append to CSV file
+# Stukje code wat een csv bestand maakt als het er nog niet is en anders een extra rij toevoegd aan het bestand. 
 df.to_csv(filename, mode='a', index=False, header=not file_exists)
 
-# Create or append to SQLite database
+# Maakt de database aan als deze niet bestaat, als dat wel zo is wordt er data bijgeschreven.
 conn = sqlite3.connect("bitcoin_data.db")
 df.to_sql("prices_eth_unix", conn, if_exists="append", index=False)
 conn.close()
 
-# Terminal message, when script has been completed.
+# Een terminal bericht dat het script succesvol heeft gedraaid.
 print(f"✅ Data appended to {filename} and stored in bitcoin_data.db in the prices_eth_unix table.")
