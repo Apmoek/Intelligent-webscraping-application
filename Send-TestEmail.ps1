@@ -2,8 +2,8 @@
 . "C:\Projects\CryptoMonitor\Intelligent-webscraping-application\AppPassword.ps1"
 
 # === Config ===
-$EmailFrom    = "tfontys@gmail.com"
-$EmailTo      = "vanderhorstjeffrey@gmail.com"
+$EmailFrom    = $AppSendingGmail
+$EmailTo      = $AppReceivingGmail
 $Subject      = "PowerShell Test Email (Gmail SMTP)"
 $Body         = "Hello! This is a test email sent from PowerShell via Gmail SMTP."
 
