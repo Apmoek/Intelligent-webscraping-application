@@ -10,12 +10,11 @@ import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime, timedelta
 
-# === CONFIG ===
+# === Configuratie, dit zijn de variablen die terug komen in het script ===
 DB_PATH = "bitcoin_data.db"
 TABLE = "prices_unix"
 THRESHOLD_PERCENT = 25
 LOOKBACK_HOURS = 24
-
 EMAIL_FROM = AppSendingGmail
 EMAIL_TO = AppReceivingGmail
 SMTP_SERVER = "smtp.gmail.com"
@@ -23,12 +22,12 @@ SMTP_PORT = 587
 SMTP_USER = AppSmTpUser
 SMTP_PASS = AppPasswordGmail  # Use app password if using Gmail
 
-# === DB Logic ===
+# === Database onderdeel van het script ===
 def get_prices():
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 
-    # Get latest price
+    # Haal de laatste prijs op
     cur.execute(f"SELECT price, timestamp FROM {TABLE} ORDER BY timestamp DESC LIMIT 1")
     latest = cur.fetchone()
     if not latest:
@@ -38,7 +37,7 @@ def get_prices():
     latest_price, latest_ts = latest
     target_ts = latest_ts - (LOOKBACK_HOURS * 3600)
 
-    # Get closest price at or before target timestamp
+    # Haal de meest recente prijs op sinds het script. 
     cur.execute(f"SELECT price FROM {TABLE} WHERE timestamp <= ? ORDER BY timestamp DESC LIMIT 1", (target_ts,))
     result = cur.fetchone()
     conn.close()
@@ -49,14 +48,14 @@ def get_prices():
     else:
         return None, latest_price
 
-# === Alert Logic ===
+# === Onderdeel voor de Alert ===
 def should_alert(old, new):
     if old == 0:
         return False, 0
     change = abs((new - old) / old) * 100
     return change >= THRESHOLD_PERCENT, change
 
-# === Email Logic ===
+# === Onderdeel waarin de Email wordt geconfigureerd ===
 def send_email(change, old, new):
     subject = f"⚠️ Bitcoin Alert: {change:.2f}% price change"
     body = f"""
