@@ -20,7 +20,7 @@ EMAIL_TO = AppReceivingGmail
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SMTP_USER = AppSmTpUser
-SMTP_PASS = AppPasswordGmail  # Use app password if using Gmail
+SMTP_PASS = AppPasswordGmail  
 
 # === Database onderdeel van het script ===
 def get_prices():
