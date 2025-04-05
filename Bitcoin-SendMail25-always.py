@@ -10,7 +10,7 @@ import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime, timedelta
 
-# === Configuratie, dit zijn de variablen die terug komen in het script ===
+# Configuratie, dit zijn de variablen die terug komen in het script
 DB_PATH = "bitcoin_data.db"
 TABLE = "prices_unix"
 THRESHOLD_PERCENT = 25
@@ -22,7 +22,7 @@ SMTP_PORT = 587
 SMTP_USER = AppSmTpUser
 SMTP_PASS = AppPasswordGmail  
 
-# === Database onderdeel van het script ===
+# Database onderdeel van het script
 def get_prices():
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
@@ -48,14 +48,14 @@ def get_prices():
     else:
         return None, latest_price
 
-# === Onderdeel voor de Alert ===
+# Onderdeel voor de Alert
 def should_alert(old, new):
     if old == 0:
         return False, 0
     change = abs((new - old) / old) * 100
     return change >= THRESHOLD_PERCENT, change
 
-# === Onderdeel waarin de Email wordt geconfigureerd ===
+# Onderdeel waarin de Email wordt geconfigureerd
 def send_email(change, old, new):
     direction = "increased 📈" if new > old else "decreased 📉"
     subject = f"⚠️ Bitcoin Alert: Price {direction} by {change:.2f}%"
