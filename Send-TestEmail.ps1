@@ -1,4 +1,4 @@
-# === Load External Password ===
+# === Laad een bestand met wachtwoorden en settings. ===
 . "C:\Projects\CryptoMonitor\Intelligent-webscraping-application\AppPassword.ps1"
 
 # === Config ===
@@ -7,18 +7,18 @@ $EmailTo      = $AppReceivingGmail
 $Subject      = "PowerShell Test Email (Gmail SMTP)"
 $Body         = "Hello! This is a test email sent from PowerShell via Gmail SMTP."
 
-# App password from https://myaccount.google.com/apppasswords
+# App password van https://myaccount.google.com/apppasswords
 $AppPassword  = $AppPasswordGmail
 
-# SMTP Settings
+# SMTP instellingen
 $SmtpServer   = "smtp.gmail.com"
 $SmtpPort     = 587
 
-# Convert app password to a secure string
+# Het wachtwoord wordt omgezet naar een secure stukje tekst.
 $SecurePass = ConvertTo-SecureString $AppPassword -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ($EmailFrom, $SecurePass)
 
-# Send the email
+# Verstuur de email.
 try {
     Send-MailMessage -From $EmailFrom -To $EmailTo -Subject $Subject -Body $Body -SmtpServer $SmtpServer -Port $SmtpPort -UseSsl -Credential $Credential
     Write-Host "✅ Email sent successfully!"
