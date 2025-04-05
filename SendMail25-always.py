@@ -57,9 +57,11 @@ def should_alert(old, new):
 
 # === Onderdeel waarin de Email wordt geconfigureerd ===
 def send_email(change, old, new):
-    subject = f"⚠️ Bitcoin Alert: {change:.2f}% price change"
+    direction = "increased 📈" if new > old else "decreased 📉"
+    subject = f"⚠️ Bitcoin Alert: Price {direction} by {change:.2f}%"
+    
     body = f"""
-    Bitcoin price has changed more than {THRESHOLD_PERCENT}% in the last {LOOKBACK_HOURS} hours.
+    Bitcoin price has {direction} in the last {LOOKBACK_HOURS} hours.
     
     Old price: ${old:,.2f}
     New price: ${new:,.2f}
@@ -77,6 +79,7 @@ def send_email(change, old, new):
         server.send_message(msg)
 
     print("✅ Alert email sent.")
+
 
 # === Main ===
 if __name__ == "__main__":
