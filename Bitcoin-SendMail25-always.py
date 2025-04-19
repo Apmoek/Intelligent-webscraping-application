@@ -1,3 +1,4 @@
+# Deze variant stuurt elke dag voor de lunch een melding met een prijswijziging in de afgelopen 24 uur.
 # Importeer vanuit het config bestand
 from config import AppPasswordGmail
 from config import AppReceivingGmail
